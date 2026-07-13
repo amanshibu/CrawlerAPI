@@ -27,8 +27,8 @@ async function main() {
 
   // Robust CLI argument parser
   // Supports:
-  // - Positional arguments: npm run crawl -- https://example.com 2 target_folder no-login no-fuzz
-  // - Flagged arguments: npm run crawl -- -t https://example.com -d 2 -o target_folder -s session.json --no-fuzz
+  // - Positional arguments: npm run crawl -- https://example.com 2 target_folder no-login fuzz
+  // - Flagged arguments: npm run crawl -- -t https://example.com -d 2 -o target_folder -s session.json --fuzz
   let positionalIndex = 0;
   for (let i = 0; i < args.length; i++) {
     const arg = args[i];
@@ -40,8 +40,8 @@ async function main() {
       i++;
     } else if (arg === '--no-login' || arg === 'no-login') {
       config.manualLogin = false;
-    } else if (arg === '--no-fuzz' || arg === 'no-fuzz') {
-      config.formFuzzing = false;
+    } else if (arg === '--fuzz' || arg === 'fuzz') {
+      config.formFuzzing = true;
     } else if (arg === '-s' || arg === '--session') {
       config.sessionFile = args[i + 1];
       i++;
@@ -58,16 +58,16 @@ async function main() {
       } else if (positionalIndex === 2) {
         if (arg === 'no-login') {
           config.manualLogin = false;
-        } else if (arg === 'no-fuzz') {
-          config.formFuzzing = false;
+        } else if (arg === 'fuzz') {
+          config.formFuzzing = true;
         } else {
           config.resultsDir = path.join('./results', arg);
         }
       } else if (positionalIndex === 3 || positionalIndex === 4) {
         if (arg === 'no-login') {
           config.manualLogin = false;
-        } else if (arg === 'no-fuzz') {
-          config.formFuzzing = false;
+        } else if (arg === 'fuzz') {
+          config.formFuzzing = true;
         }
       }
       positionalIndex++;
@@ -77,8 +77,8 @@ async function main() {
   if (!config.targetUrl) {
     console.error('\x1b[91m[-]\x1b[0m Error: Seed target URL is missing.');
     console.log('\x1b[93mUsage options:\x1b[0m');
-    console.log('  npm run crawl -- <targetUrl> [<maxDepth>] [<outputFolder>] [no-login] [no-fuzz]');
-    console.log('  npm run crawl -- -t <targetUrl> -d <depth> [-o <outputFolder>] [-s <sessionFile>] [--no-login] [--no-fuzz]');
+    console.log('  npm run crawl -- <targetUrl> [<maxDepth>] [<outputFolder>] [no-login] [fuzz]');
+    console.log('  npm run crawl -- -t <targetUrl> -d <depth> [-o <outputFolder>] [-s <sessionFile>] [--no-login] [--fuzz]');
     process.exit(1);
   }
 

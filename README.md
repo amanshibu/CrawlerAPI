@@ -59,11 +59,11 @@ npm run crawl -- -t <targetUrl> -d <maxDepth> -o <outputFolderName> [options]
   * `-o` / `--output`: Specific output folder under `./results/` to store data.
   * `-s` / `--session`: Custom storage path for cookies/session state (default: `./session.json`).
   * `--no-login`: Disables manual login pause.
-  * `--no-fuzz`: Disables automated form submission actions.
+  * `--fuzz`: Enables automated mock form submission and interaction.
 
 ### 2. Positional Execution (Shorthand)
 ```bash
-npm run crawl -- "<targetUrl>" <maxDepth> <outputFolder> [no-login] [no-fuzz]
+npm run crawl -- "<targetUrl>" <maxDepth> <outputFolder> [no-login] [fuzz]
 ```
 
 ### Examples

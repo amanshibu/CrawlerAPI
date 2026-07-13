@@ -30,5 +30,5 @@
   "manualLogin": true,
   "manualLoginTimeoutMs": 60000,
   "sessionFile": "./session.json",
-  "formFuzzing": true
+  "formFuzzing": false
 }
