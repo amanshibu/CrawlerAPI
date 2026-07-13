@@ -1,0 +1,22 @@
+{
+  "name": "api-crawler-mapper",
+  "version": "1.0.0",
+  "description": "A generic, configurable CLI tool to crawl web applications, map dynamic routes, capture API requests, and generate structured inventories.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node src/index.ts",
+    "crawl": "ts-node src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "playwright": "^1.42.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
